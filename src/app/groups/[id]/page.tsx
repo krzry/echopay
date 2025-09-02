@@ -77,9 +77,6 @@ export default function GroupDetailPage({
   params: { id: string };
 }) {
   const [activeTab, setActiveTab] = useState("expenses");
-  // ✅ Correct: Unwrap the promise first
-  const resolvedParams = use(params);
-  // const id = resolvedParams.id; // Now access the 'id' property
 
   return (
     <div className="min-h-screen bg-gray-50 pb-20">
@@ -112,7 +109,7 @@ export default function GroupDetailPage({
           </TabsList>
 
           <TabsContent value="expenses" className="space-y-4 mt-4">
-            <Link href={`/groups/${resolvedParams.id}/add-expense`}>
+            <Link href={`/groups/${params.id}/add-expense`}>
               <Button className="w-full h-12 flex items-center gap-2">
                 <Plus className="h-5 w-5" />
                 Add Expense
