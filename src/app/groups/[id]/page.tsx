@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, use } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -8,7 +8,6 @@ import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ArrowLeft, Plus, Receipt, Users, Calendar } from "lucide-react";
 import Link from "next/link";
-import { use } from "react";
 
 // Mock data for group details
 const mockGroupData = {
@@ -74,8 +73,9 @@ const mockGroupData = {
 export default function GroupDetailPage({
   params,
 }: {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }) {
+  const { id } = use(params);
   const [activeTab, setActiveTab] = useState("expenses");
 
   return (
@@ -109,7 +109,7 @@ export default function GroupDetailPage({
           </TabsList>
 
           <TabsContent value="expenses" className="space-y-4 mt-4">
-            <Link href={`/groups/${params.id}/add-expense`}>
+            <Link href={`/groups/${id}/add-expense`}>
               <Button className="w-full h-12 flex items-center gap-2">
                 <Plus className="h-5 w-5" />
                 Add Expense
