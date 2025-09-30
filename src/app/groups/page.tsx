@@ -62,7 +62,7 @@ export default function GroupsPage() {
 
       <div className="p-4 space-y-4">
         {/* Create Group Button */}
-        <Link href="/create-group">
+        <Link href="/groups/create-group">
           <Button className="w-full h-12 flex items-center gap-2">
             <Plus className="h-5 w-5" />
             Create New Group
